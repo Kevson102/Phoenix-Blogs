@@ -1,6 +1,8 @@
 import os
 class Config:
   SECRET_KEY = os.environ.get('SECRET_KEY')
+  SQLALCHEMY_DATABASE_URL = 'postgresql+psycopy2://kevson:Antidolofinomonoligasta102@localhost/blogs'
+
   
   
 class ProdConfig(Config):
@@ -18,8 +20,8 @@ class DevConfig(Config):
   Args:
     Config: The parent configuration class with general configuration settings
   '''
-  SQLALCHEMY_DATABASE_URL = 'postgresql+psychopy2://kevson:Antidolofinomonoligasta102@localhost/blogs'
-  
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kevson:Antidolofinomonoligasta102@localhost/blogs'
+
   DEBUG = True
   
 config_options = {
