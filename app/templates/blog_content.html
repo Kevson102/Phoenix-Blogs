@@ -1,0 +1,13 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block content %}
+
+<h1>INDEX PAGE WORKS AS EXPECTED</h1>
+
+<div class="container">
+  {% for blog in blogs %}
+    <h3>Title: {{blog.blog_title}}</h3>
+  {% endfor %}
+</div>
+
+{%endblock%}
