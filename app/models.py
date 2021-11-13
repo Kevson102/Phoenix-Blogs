@@ -34,6 +34,7 @@ class Blog(db.Model):
   
   id = db.Column(db.Integer, primary_key=True)
   blog_title = db.Column(db.String(500))
+  author = db.Column(db.String(50))
   blog_display_pic_path = db.Column(db.String)
   blog_content = db.Column(db.String)
   date_posted = db.Column(db.DateTime, default = datetime.utcnow)
