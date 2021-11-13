@@ -10,6 +10,7 @@ def index():
   '''
   Root page function that returns the index.html page
   '''
+  
   title = "Welcome to Phoenix Blogs | TechBlogs"
   blogs = Blog.query.all()
   
@@ -17,9 +18,10 @@ def index():
 
 @main.route('/blog/content/<int:id>', methods = ['POST', 'GET'])
 def blog_content(id):
+  comments = Comment.query.all()
   blog = Blog.query.filter_by(id=id).all()
   
-  return render_template('blog_content.html', blogs = blog)
+  return render_template('blog_content.html', blogs = blog, comments=comments)
 
 @main.route('/blogs/new_blog', methods = ['GET', 'POST'])
 def new_blog():
@@ -45,7 +47,7 @@ def post_comment():
     db.session.add(new_comment)
     db.session.commit()
     
-    return redirect(url_for(main.blog_content))
+    return redirect(url_for('main.index'))
   return render_template('comments.html', comment_form = comment_form)
 
 

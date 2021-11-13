@@ -6,6 +6,7 @@
 
 
 <div class="container">
+
   {% for blog in blogs %}
 
     <h3>{{blog.blog_title}}</h3>
@@ -14,8 +15,16 @@
     <a href="{{url_for('main.post_comment')}}" class="btn btn-sm btn-primary">Comment</a>
 
   {% endfor %}
+  <h3>Comments</h3>
 
-  
+  {% for comment in comments%}
+  <div>
+    {{comment.comment_message}}
+    <br>
+    <small><b>Posted on: </b><em>{{comment.date_posted}}</em></small>
+  </div>
+  <hr>
+  {% endfor %}
 
 </div>
 
