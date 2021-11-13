@@ -4,12 +4,17 @@
 
 {% block content %}
 
-<h1>INDEX PAGE WORKS AS EXPECTED</h1>
+<!-- <h1>INDEX PAGE WORKS AS EXPECTED</h1> -->
 
 <div class="container">
   {% for blog in blogs %}
-    <h3>Title: {{blog.blog_title}}</h3>
+  <a href="{{url_for('main.blog_content', id=blog.id)}}"><h3>{{blog.blog_title}}</h3></a>
+  <small><b>By: </b> <i>{{blog.author}}</i></small>
   {% endfor %}
+
+  <br>
+  <a href="{{url_for('main.new_blog')}}" class="btn btn-sm btn-primary">Create a Blog</a>
+
 </div>
 
 {%endblock%}
