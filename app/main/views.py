@@ -2,7 +2,7 @@ from flask import render_template, redirect, url_for, abort, request
 from . import main
 from .. import db, photos
 from ..models import User, Blog, Comment
-from .forms import BlogForm
+from .forms import BlogForm, CommentForm
 
 # Views
 @main.route('/')
@@ -33,6 +33,20 @@ def new_blog():
     return redirect(url_for('main.index'))
   
   return render_template('new_blog.html', blog_form = blog_form)
+
+@main.route('/blog/content/comment', methods = ['GET', 'POST'])
+def post_comment():
+  comment_form = CommentForm()
+
+  if comment_form.validate_on_submit():
+    comment_message = comment_form.comment_message.data
+    new_comment = Comment(comment_message = comment_message)
+    
+    db.session.add(new_comment)
+    db.session.commit()
+    
+    return redirect(url_for(main.blog_content))
+  return render_template('comments.html', comment_form = comment_form)
 
 
 # @main.route('/blogs/blogpicture', methods = ['GET', 'POST'])

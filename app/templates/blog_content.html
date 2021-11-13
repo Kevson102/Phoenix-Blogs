@@ -1,15 +1,22 @@
 {% extends 'bootstrap/base.html' %}
+{% import 'bootstrap/wtf.html' as wtf%}
+
 
 {% block content %}
 
 
 <div class="container">
   {% for blog in blogs %}
+
     <h3>{{blog.blog_title}}</h3>
     <p>{{blog.blog_content}}</p>
 
-    <a href="" class="btn btn-sm btn-primary">Comment</a>
+    <a href="{{url_for('main.post_comment')}}" class="btn btn-sm btn-primary">Comment</a>
+
   {% endfor %}
+
+  
+
 </div>
 
 {%endblock%}
