@@ -2,11 +2,13 @@
 
 {% block content %}
 
-<h1>INDEX PAGE WORKS AS EXPECTED</h1>
 
 <div class="container">
   {% for blog in blogs %}
-    <h3>Title: {{blog.blog_title}}</h3>
+    <h3>{{blog.blog_title}}</h3>
+    <p>{{blog.blog_content}}</p>
+
+    <a href="" class="btn btn-sm btn-primary">Comment</a>
   {% endfor %}
 </div>
 

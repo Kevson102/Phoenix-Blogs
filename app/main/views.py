@@ -15,7 +15,11 @@ def index():
   
   return render_template('index.html',title=title, blogs=blogs)
 
-
+@main.route('/blog/content/<int:id>', methods = ['POST', 'GET'])
+def blog_content(id):
+  blog = Blog.query.filter_by(id=id).all()
+  
+  return render_template('blog_content.html', blogs = blog)
 
 @main.route('/blogs/new_blog', methods = ['GET', 'POST'])
 def new_blog():
