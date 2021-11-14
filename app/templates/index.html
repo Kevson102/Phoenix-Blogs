@@ -16,9 +16,10 @@
   <a href="{{url_for('main.new_blog')}}" class="btn btn-sm btn-primary">Create a Blog</a>
 
 </div>
-<div>
+<div class="text-center">
   {% for quote in quotes%}
-    <p> {{quote.quote}} </p>
+    <p><em> {{quote.quote}} </em></p>
+    <small><i>~<b>{{quote.author}}</b></i></small>
   {% endfor %}
 </div>
 

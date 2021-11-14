@@ -12,7 +12,7 @@
     <h3>{{blog.blog_title}}</h3>
     <p>{{blog.blog_content}}</p>
 
-    <a href="{{url_for('main.post_comment')}}" class="btn btn-sm btn-primary">Comment</a>
+    <a href="{{url_for('main.post_comment')}}" class="btn btn-sm btn-primary">Leave a Comment</a>
 
   {% endfor %}
   <h3>Comments</h3>
@@ -23,6 +23,8 @@
     <br>
     <small><b>Posted on: </b><em>{{comment.date_posted}}</em></small>
   </div>
+
+  <a href="/comment/delete/{{comment.id}}" class="btn btn-sm btn-danger">Delete Comment</a>
   <hr>
   {% endfor %}
 

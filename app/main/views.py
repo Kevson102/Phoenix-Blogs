@@ -56,6 +56,21 @@ def post_comment():
     return redirect(url_for('main.index'))
   return render_template('comments.html', comment_form = comment_form)
 
+@main.route('/comment/delete/<int:id>')
+@login_required
+def delete(id):
+  comment_to_delete = Comment.query.get(id)
+  # db.session.delete(comment_to_delete)
+  # db.session.commit()
+  # return redirect(url_for('main.blog_content'))
+  try:
+    db.session.delete(comment_to_delete)
+    db.session.commit()
+    
+    return redirect(url_for('main.index'))
+  except:
+    return "There was an error deleting the comment"
+  
 
 # @main.route('/blogs/blogpicture', methods = ['GET', 'POST'])
 # def update_blog_display_pic(blogid):
