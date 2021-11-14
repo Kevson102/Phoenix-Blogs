@@ -2,26 +2,29 @@
 
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toogle navigation</span>
-        <!-- <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> -->
-      </button>
-      <a href="/" class="navbar-brand" style="color:black; font-size: 30px"><b>Phoenix Pitches</b></a>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> -->
+      <a href="/" class="navbar-brand" style="color:black; font-size: 30px"><b>Phoenix Blogs</b></a>
     </div>
-    <div class="navbar-collapse collapse">
+
+    <div class="">
       <ul class="nav navbar-nav">
-        <li><a href="/" style="color:black; border-left: 1px solid black"><b>Home</b></a></li>
+        <li><a href="/" style="color:black;"><b>Home</b></a></li>
       </ul>
     </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      {% if current_user.is_authenticated %}
+        <li><a href="{{url_for('auth.logout')}}"style="color:black;"><b>Sign out</b></a></li>
+      {% else %}
+        <li><a href="{{url_for('auth.login')}}" style="color:black;"><b>Join as a Writer</b></a></li>
+      {% endif %}
+    </ul>
+
   </div>
 
-  <ul class="nav navbar-nav navbar-right">
-    {% if current_user.is_authenticated %}
-      <li><a href="{{url_for('auth.logout')}}"style="color:black;"><b>Sign out</b></a></li>
-    {% else %}
-      <li><a href="{{url_for('auth.login')}}" style="color:black;"><b>Join as a Writer</b></a></li>
-    {% endif %}
-  </ul>
 </div>
