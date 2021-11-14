@@ -43,7 +43,7 @@ The writer can:
 # Cloning
 Open Terminal:
 
-  $ git clone https://github.com/Kevson102/Pitches.git
+  $ git clone https://github.com/Kevson102/Phoenix-Blogs.git
   $ cd Pitches
   $ code . or atom . based on your text editor 
   
