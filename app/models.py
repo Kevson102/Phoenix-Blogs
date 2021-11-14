@@ -64,3 +64,18 @@ class Comment(db.Model):
   def __repr__(self):
     return f'Comment {self.comment_message}'
   
+class Quote:
+  '''
+  This is a quote class that is used for defining a quote object
+  '''
+  def __init__(self, id, author, quote):
+    '''
+    Method that initializes the Quote object
+    Args:
+      id: The id of the quote
+      author: The author of the quote
+      quote: The quote statement
+    '''
+    self.id = id
+    self.author = author
+    self.quote = quote

@@ -4,6 +4,7 @@ from .. import db, photos
 from ..models import User, Blog, Comment
 from .forms import BlogForm, CommentForm
 from flask_login import login_required
+from ..requests import get_random_quote
 
 # Views
 @main.route('/')
@@ -11,11 +12,11 @@ def index():
   '''
   Root page function that returns the index.html page
   '''
-  
+  random_quote = get_random_quote()
   title = "Welcome to Phoenix Blogs | TechBlogs"
   blogs = Blog.query.all()
   
-  return render_template('index.html',title=title, blogs=blogs)
+  return render_template('index.html',title=title, blogs=blogs, quotes=random_quote)
 ###########################################################################
 
 @main.route('/blog/content/<int:id>', methods = ['POST', 'GET'])
