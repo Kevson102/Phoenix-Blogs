@@ -1,24 +1,49 @@
 {% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 
-{% block content %}
+{%block content%}
 
-<!-- <h1>INDEX PAGE WORKS AS EXPECTED</h1> -->
+<div class="container mt-2" style="background-color: aqua;">
+  <div >
+    <div class="">
+      <div class="row">
+        {% for blog in blogs %}
 
-<div class="container">
-  {% for blog in blogs %}
-  <a href="{{url_for('main.blog_content', id=blog.id)}}"><h3>{{blog.blog_title}}</h3></a>
-  <small><b>By: </b> <i>{{blog.author}}</i></small>
-  {% endfor %}
+        <div class="card col-md-4 mt-4" style="display: flex; justify-content: space-around;">
+          <a href="{{url_for('main.blog_content', id=blog.id)}}" class="text-center"><h3>{{blog.blog_title}}</h3></a>
+          <br>
+    
+          {% if blog.blog_display_pic_path%}
+            <img src="{{url_for('static',filename=blog.blog_display_pic_path)}}" alt="" class="img-responsive img-thumbnail">
+          {%else%}
+            <p>This Blog has no Display Bunner</p>
+          {%endif%}
+    
+          <small><b>By: </b> <i>{{blog.author}}</i></small>
+          <br>
+          <div class="text-center">
+            <a href="/blog/delete/{{blog.id}}" class="btn btn-sm btn-danger">Delete Blog</a>
+          </div>
+        </div>
 
-  <br>
-  <a href="{{url_for('main.new_blog')}}" class="btn btn-sm btn-primary">Create a Blog</a>
+      {% endfor %}
+      </div>
+    </div>
+
+    <br>
+    <a href="{{url_for('main.new_blog')}}" class="btn btn-sm btn-primary mt-4">Create a Blog</a>
+  </div>
 
 </div>
 <div class="text-center">
   {% for quote in quotes%}
-    <p><em> {{quote.quote}} </em></p>
+    <p><em> <b>{{quote.quote}}</b> </em></p>
     <small><i>~<b>{{quote.author}}</b></i></small>
   {% endfor %}
 </div>

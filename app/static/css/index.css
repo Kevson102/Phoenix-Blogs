@@ -1,0 +1,10 @@
+.card{
+  margin-top: 10px;
+  background-color: blue;
+}
+.blogs{
+  display: flex;
+}
+h1{
+  color: brown;
+}
